@@ -44,14 +44,67 @@ const partition = (array, start, end) => {
   return j;
 };
 
-// const tempArray = [1, 2, 7, 0];
+const tempArray = [1, 2, 7, 0];
 // console.log(qSort(tempArray));
 console.log(qSort(data));
 
 /* ========= mergeSort ========= */
 // merge & mergeSort fn
 // left, right, middle
+// swap
 
+//split the array until you have just arr.length = 1;
+const mergeSort = (array) => {
+  if (array.length <= 1) {
+    return array;
+  }
+
+  let middle = Math.floor(array.length/2);
+  let left = array.slice(0, middle);  
+  let right = array.slice(middle, array.length);
+
+  left = mergeSort(left);
+  right = mergeSort(right);   
+  return merge(left, right, array);       
+};
+
+//merge returns an array, that has both left & right
+const merge = (left, right, array)=> {
+  let li = 0;
+  let ri = 0;
+  let oi = 0;
+  
+  //if left is greater than right
+  if(left[li] > right[ri]) { // 9 > 4
+    console.log('left:', left[li], 'right: ', right[ri]);
+    array[oi] = right[ri]; // arr = [9] => [4]
+    array[oi + 1] = left[li];
+    // console.log('left > right',arr[oi]);
+    //swap(array, left[li], right[ri]);
+    oi++;
+    ri++;
+  }
+  //if left is less than right
+  if(left[li] < right[ri]) { // 9 > 4
+    console.log('left:', left[li], 'right: ', right[ri]);
+    array[oi] = left[li]; // arr = [9] => [4]
+    array[oi + 1] = right[ri];
+    console.log('left < right',arr[oi]);
+    //swap(array, left[li], right[ri]);
+    oi++;
+    li++;
+  }
+
+  //two for loops
+
+  return array;  
+  
+  
+};
+
+const arr = [3, 6, 9, 4];
+
+console.log(mergeSort(arr));
 
 /* ========= bucketSort ========= */
 
