@@ -8,6 +8,9 @@ const data = string.split(' ').map( num => Number(num));
 // partition, pivot
 // array, start, end, middle
 
+const qSort = (array, start=0, end=array.length)=> {
+
+};
 
 /* ========= mergeSort ========= */
 // merge & mergeSort fn
