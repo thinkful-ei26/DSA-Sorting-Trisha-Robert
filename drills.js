@@ -74,37 +74,34 @@ const merge = (left, right, array)=> {
   let ri = 0;
   let oi = 0;
   
-  //if left is greater than right
-  if(left[li] > right[ri]) { // 9 > 4
-    console.log('left:', left[li], 'right: ', right[ri]);
-    array[oi] = right[ri]; // arr = [9] => [4]
-    array[oi + 1] = left[li];
-    // console.log('left > right',arr[oi]);
-    //swap(array, left[li], right[ri]);
-    oi++;
-    ri++;
-  }
-  //if left is less than right
-  if(left[li] < right[ri]) { // 9 > 4
-    console.log('left:', left[li], 'right: ', right[ri]);
-    array[oi] = left[li]; // arr = [9] => [4]
-    array[oi + 1] = right[ri];
-    console.log('left < right',arr[oi]);
-    //swap(array, left[li], right[ri]);
-    oi++;
-    li++;
+  while(li < left.length && ri < right.length) {
+    //if left is greater than right
+    if(left[li] > right[ri]) { // 9 > 4
+      //console.log('left:', left[li], 'right: ', right[ri]);
+      array[oi++] = right[ri++]; // arr = [9] => [4]
+    }
+    //if left is less than right
+    if(left[li] < right[ri]) { // 9 > 4
+      //console.log('left:', left[li], 'right: ', right[ri]);
+      array[oi++] = left[li++]; // arr = [9] => [4]
+    }
   }
 
-  //two for loops
+  for (let i=li; i <left.length; i++) {
+    array[oi++] = left[i];
+  }
 
+  for (let i = ri; i < right.length; i++) {
+    array[oi++] = right[i];
+  }  
+    
   return array;  
-  
-  
+
 };
 
-const arr = [3, 6, 9, 4];
-
-console.log(mergeSort(arr));
+//const arr = [3, 6, 9, 4];
+//console.log(mergeSort(arr));
+console.log(mergeSort(data));
 
 /* ========= bucketSort ========= */
 
